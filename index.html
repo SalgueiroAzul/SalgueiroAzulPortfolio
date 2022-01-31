@@ -1,6 +1,7 @@
 <html>
 <style>
 
+.pointer {cursor: pointer;}
 
 body {
   background-color: ceb980;;
@@ -11,8 +12,8 @@ img {
     image-rendering: -webkit-optimize-contrast;
     image-rendering: pixelated;
     -ms-interpolation-mode: nearest-neighbor;
-	}
-	
+    }
+    
 
 </style>
 
@@ -23,11 +24,50 @@ img {
   
   <p style="text-align: center;"><img src="https://raw.githubusercontent.com/SalgueiroAzul/SalgueiroAzul.github.io/main/elements/2_portfolio.png" alt="" width="416" height="48" /></p>
   <p>&nbsp;</p>
-  <p style="text-align: center;"><img src="Pixelart/pixelart1.gif" onclick="enlargeImg(this)" id=img1> </p>
+  
+  
+  <!--- image galery --->
+  
+  
+  <p style="text-align: center;"><img src="pixelart/pixelart1.gif" alt="x1" onclick="res(this)" class="pointer" id=img2> </p>
  
-  <p style="text-align: center;"><img src="Pixelart/pixelart2.gif" onclick="enlargeImg(this)" id=img2> </p>
+  <p style="text-align: center;"><img src="pixelart/pixelart2.gif" alt="x1" onclick="res(this)" class="pointer" id=img2> </p>
+ 
+  <p style="text-align: center;"><img src="pixelart/pixelart3.gif" alt="x1" onclick="res(this)" class="pointer" id=img2> </p>
+   
+  <p style="text-align: center;"><img src="pixelart/pixelart4.gif" alt="x1" onclick="res(this)" class="pointer" id=img2> </p>
+  
+  <p style="text-align: center;"><img src="pixelart/pixelart5.png" alt="x1" onclick="res(this)" class="pointer" id=img2> </p>
+  
+  <p style="text-align: center;"><img src="pixelart/pixelart6.gif" alt="x1" onclick="res(this)" class="pointer" id=img2> </p>  
+  
+  <p style="text-align: center;"><img src="pixelart/pixelart7a.gif" alt="x1" onclick="res(this)" class="pointer" id=img2> </p>
+  
+  <p style="text-align: center;"><img src="pixelart/pixelart9.gif" alt="x1" onclick="res(this)" class="pointer" id=img2> </p>
+  
+  <p style="text-align: center;"><img src="pixelart/pixelart8.gif" alt="x1" onclick="res(this)" class="pointer" id=img2> </p> 
+
+  <p style="text-align: center;"><img src="pixelart/pixelart9a1.gif" alt="x1" onclick="res(this)" class="pointer" id=img2> </p>
+
+  <p style="text-align: center;"><img src="pixelart/pixelart9a2.png" alt="x1" onclick="res(this)" class="pointer" id=img2 width="406" height="328"> </p>
+  
+  <p style="text-align: center;"><img src="pixelart/pixelart9a3.gif" alt="x1" onclick="res(this)" class="pointer" id=img2> </p>
+ 
+  <p style="text-align: center;"><img src="pixelart/pixelart9a4.png" alt="x1" onclick="res(this)" class="pointer" id=img2 width="406" height="325"> </p>
+  
+  <p style="text-align: center;"><img src="pixelart/pixelart7.png" alt="x1" onclick="res(this)" class="pointer" id=img2> </p>
+  
+  <p style="text-align: center;"><img src="pixelart/pixelart3a.png" alt="x1" onclick="res(this)" class="pointer" id=img2> </p>  
+ 
+
+
   <p>&nbsp;</p>
- 
+  <p class="pointer" style="text-align: center;"><img src="pixelart/arrowtop.png" onclick="GoTop()"> </p>  
+  
+
+  
+  <p style="text-align: center;"><img src="https://raw.githubusercontent.com/SalgueiroAzul/SalgueiroAzul.github.io/main/elements/4_a.png" alt="" width="240" height="60" /></p>
+
 
 
 
@@ -36,35 +76,59 @@ img {
 </body>
 
   <script>
-  //the not working part
-    		var x = 0;
+		
+		
+		function res(img) {	
+			if (img.getAttribute('alt') === 'x1'){
 			
-			if (x =! 0) {
-			// Function to increase image size
-          function enlargeImg(img) {
+			img.style.width = (img.clientWidth * 2); // double img size
+			img.style.height = "auto";
+			img.setAttribute('alt', 'x2') ;			 // change img's var		
+			//window.alert('aaaaa');				 // debug
 			
-               img.style.transform = "scale(2)";
-               img.style.transition = "transform 0.25s ease";
-          }
+		} else{
+			img.style.width = (img.clientWidth / 2); // half img size
+			img.style.height = "auto";
+			img.setAttribute('alt', 'x1') ;			 // change img's var		
+			//window.alert('argh, landlover!');		 // debug
+		
 		}
-			else{
-			}
-			
-			
-			// Function to increase image size
-            ///function enlargeImg(img) {
-			
-           //     img.style.transform = "scale(2)";
-           //     img.style.transition = "transform 0.25s ease";
-         //   }
-						
-			// Function to reset image size
-				//function resetImg(img) {
-			// Set image size to original
-				//img.style.transform = "scale(1)";
-				//img.style.transition = "transform 0.25s ease";
-				//}
-  </script>
+	}
 	
+		function GoTop() {		
+		 window.scrollTo(0, 0);
+		}
+		
+		function houverA(){
+		document.getElementById("img2").style.cursor = "pointer";
+		
+		}
+		
+		
+  //the not working part
+        var imageSize = 1; //first off, let's go ahead and make this a variable name we'll remember
+            
+      // function to resize the image, it handles both sides of the toggle
+         function resizeImg(img) {
+        
+        // if the image size is the default, change it to be bigger
+        if (imageSize == 1) {
+   //       img.style.transform = "scale(2)"; // make the image 2x as large as the original		 
+     //     img.style.transition = "transform 0.25s ease"; // transition of a quarter second for the change		
+	          imageSize = 2; // keep track of the state of the image size
+			  img.style.width = (img.clientWidth * 2);
+			  setAttribute('alt', 'x2');
+        }
+        // if the image size is not the default, we want to shrink it, right?
+        else {
+    //      img.style.transform = "scale(1)"; // make the image its original size
+   //       img.style.transition = "transform 0.25s ease"; // transition of a quarter second for the change
+          
+		  imageSize = 1; // keep track of the state of the image size
+		  img.style.width = (img.clientWidth / 2)
+        }
+      }
+  </script>
+    
 
 </html>
